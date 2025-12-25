@@ -1,0 +1,35 @@
+version: '3.12'
+
+services:
+  # MCP Server (stdio mode)
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mcp
+    container_name: tax-code-mcp
+    stdin_open: true  # Keep stdin open for MCP stdio
+    tty: true
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    # No ports needed for stdio MCP
+
+  # HTTP API server (FastAPI wrapper)
+  http-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.http
+    container_name: tax-code-http
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/app
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

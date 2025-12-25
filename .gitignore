@@ -1,0 +1,6 @@
+zero_env/
+src/retrieval/__pycache__
+src/ingestion/__pycache__
+src/embeddings/__pycache__
+.DS_Store/
+chroma_db/
