@@ -1,4 +1,4 @@
-# fly.toml app configuration file generated for tax-code-rag on 2025-12-25T23:40:28Z
+# fly.toml app configuration file generated for tax-code-rag on 2025-12-26T00:17:00Z
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
@@ -9,15 +9,12 @@ primary_region = 'ord'
 [build]
 
 [http_service]
-  internal_port = 8000
+  internal_port = 8080
   force_https = true
   auto_stop_machines = 'stop'
   auto_start_machines = true
   min_machines_running = 0
   processes = ['app']
-
-[processes]
-  app = "uvicorn src.api.http_server.app:app --host 0.0.0.0 --port 8000"
 
 [[vm]]
   memory = '1gb'
