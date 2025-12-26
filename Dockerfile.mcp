@@ -48,4 +48,4 @@ EXPOSE 8000
 CMD ["python", "src/main.py"]
 
 # Alternative: Run HTTP server (uncomment if needed)
-# CMD ["python", "src/http_server.py"]
+# CMD ["python", "src/api/http_server.py"]
