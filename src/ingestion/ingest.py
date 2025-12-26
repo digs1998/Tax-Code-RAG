@@ -1,4 +1,3 @@
-# src/ingestion/ingest.py
 """
 Complete ingestion pipeline for tax code PDF
 Run this once to build the vector store

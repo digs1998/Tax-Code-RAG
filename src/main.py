@@ -1,4 +1,3 @@
-# src/main.py
 """
 MCP Server for Tax Code Search
 Exposes search functionality via Model Context Protocol

@@ -1,4 +1,3 @@
-# src/ingestion/sectionParser.py
 import re
 from typing import List, Dict
 

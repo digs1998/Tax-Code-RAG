@@ -15,11 +15,10 @@ The design intentionally separates **ingestion**, **retrieval**, and **serving**
 
 ## Prerequisites
 
-* Python 3.10+
-* Git
-* (Optional) Docker
-
-
+* Python 3.12
+* GitHub
+* Docker
+* [MCP documentation](https://modelcontextprotocol.io/docs/tools/inspector)
 
 ## Local Setup (Python venv)
 
@@ -77,7 +76,6 @@ You can experiment with:
 
 This allows you to directly observe retrieval quality and grounding behavior.
 
----
 
 ## Configuration Notes
 
@@ -89,7 +87,6 @@ Common parameters can be adjusted via environment variables or config files:
 
 These defaults are chosen to make local evaluation simple.
 
----
 
 ## Docker Setup (Optional)
 
@@ -98,7 +95,7 @@ The project can also be run using Docker for a reproducible environment.
 ### Build the image
 
 ```bash
-docker build -t tax-code-rag .
+docker compose up --build -d .
 ```
 
 ### Run ingestion inside Docker
@@ -125,7 +122,6 @@ docker run -p 8000:8000 -v $(pwd)/chroma_db:/app/chroma_db tax-code-rag \
 * Vector DB artifacts are generated locally to avoid committing large derived files
 * The system favors clarity and reproducibility over production hardening
 
----
 
 ## Extending the Project
 
@@ -136,7 +132,6 @@ Common extensions include:
 * Swapping vector stores or embedding models
 * Deploying the HTTP adapter to a managed service
 
----
 
 ## Summary
 

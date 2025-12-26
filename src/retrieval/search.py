@@ -1,4 +1,3 @@
-# src/retrieval/search.py - Hybrid Search
 from typing import List, Dict
 from langchain_community.vectorstores import Chroma
 from rank_bm25 import BM25Okapi

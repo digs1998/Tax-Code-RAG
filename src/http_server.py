@@ -35,12 +35,11 @@ app.add_middleware(
 )
 
 # Load vector store at startup
-print("🚀 Starting Tax Code Search API...")
-print("📦 Loading vector store...")
+print(" Starting Tax Code Search API...")
 db = get_vectorstore("chroma_db")
-print("🔍 Initializing hybrid search...")
+print(" Initializing hybrid search...")
 initialize_bm25(db)
-print("✅ API Ready!")
+print(" ===== API Ready! =====")
 
 # Request/Response models
 class SearchRequest(BaseModel):

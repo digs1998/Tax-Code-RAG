@@ -1,4 +1,3 @@
-# src/ingestion/pdfLoader.py
 from langchain_community.document_loaders import PyPDFLoader
 from typing import List
 
