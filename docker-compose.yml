@@ -1,25 +1,28 @@
 version: '3.12'
 
 services:
-  # MCP Server (stdio mode)
+  # MCP Server (uses "mcp" stage)
   mcp-server:
     build:
       context: .
-      dockerfile: Dockerfile.mcp
+      dockerfile: Dockerfile
+      target: mcp
+    image: tax-code-mcp:latest
     container_name: tax-code-mcp
-    stdin_open: true  # Keep stdin open for MCP stdio
+    stdin_open: true
     tty: true
     restart: unless-stopped
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
-    # No ports needed for stdio MCP
-
-  # HTTP API server (FastAPI wrapper)
-  http-server:
+    
+  # HTTP API Server (uses "http" stage)
+  http-api:
     build:
       context: .
-      dockerfile: Dockerfile.http
+      dockerfile: Dockerfile
+      target: http
+    image: tax-code-http:latest
     container_name: tax-code-http
     ports:
       - "8000:8000"
@@ -27,6 +30,7 @@ services:
     environment:
       - PYTHONUNBUFFERED=1
       - PYTHONPATH=/app
+      - PORT=8000
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 30s
