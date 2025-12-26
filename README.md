@@ -24,7 +24,7 @@ The design intentionally separates **ingestion**, **retrieval**, and **serving**
 
 ### 1. Create and activate a virtual environment
 
-```
+```bash
 python -m venv .venv
 source .venv/bin/activate   # macOS / Linux
 # .venv\Scripts\activate    # Windows
@@ -32,7 +32,7 @@ source .venv/bin/activate   # macOS / Linux
 
 ### 2. Install dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
@@ -40,7 +40,7 @@ pip install -r requirements.txt
 
 Before running the server, embeddings must be generated and stored locally.
 
-```
+```bash
 python src/ingestion/ingest.py
 ```
 
@@ -56,7 +56,7 @@ This will:
 
 Start the MCP server using:
 
-```
+```bash
 mcp-inspector python src/main.py
 ```
 
@@ -103,6 +103,13 @@ docker compose up --build -d .
 ```bash
 docker run -p 8010:8010 -v $(pwd)/chroma_db:/app/chroma_db tax-code-mcp \
   python src/main.py
+```
+
+### To shutdown
+```bash
+
+docker compose down
+
 ```
 
 > The `chroma_db` directory is mounted as a volume so embeddings persist across runs.
