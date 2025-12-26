@@ -98,18 +98,11 @@ The project can also be run using Docker for a reproducible environment.
 docker compose up --build -d .
 ```
 
-### Run ingestion inside Docker
-
-```bash
-docker run -v $(pwd)/chroma_db:/app/chroma_db tax-code-rag \
-  python src/ingestion/ingest.py
-```
-
 ### Run the MCP server
 
 ```bash
-docker run -p 8000:8000 -v $(pwd)/chroma_db:/app/chroma_db tax-code-rag \
-  mcp-inspector python src/main.py
+docker run -p 8010:8010 -v $(pwd)/chroma_db:/app/chroma_db tax-code-mcp \
+  python src/main.py
 ```
 
 > The `chroma_db` directory is mounted as a volume so embeddings persist across runs.
